@@ -9,6 +9,8 @@
   crossorigin="anonymous">    
      </script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="/public/css/chosen.css" rel="stylesheet">
+     <link href="/public/css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,7 +27,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/allusers">All Users</a>
+        <a class="nav-link" href="/allUsers">All Users</a>
       </li>
     </ul>  
   </div>

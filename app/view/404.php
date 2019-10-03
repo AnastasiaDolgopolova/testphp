@@ -1,6 +1,6 @@
 <?php
 
-require_once  __DIR__ . '/../views/include_header.php';
+require_once  __DIR__ . '/../view/header.php';
 
 ?>
 

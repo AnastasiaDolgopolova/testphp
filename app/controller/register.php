@@ -1,16 +1,8 @@
 <?php
 $db =include __DIR__ . '/../model/database/start.php';
+include __DIR__ . '/../model/Register.php';
+use App\Model\Register;
 
-$data = [ 
-	'name' => clean($_POST['name']),
-	'email' => clean($_POST['email']),
-	'territory' => clean($_POST['territory']),
-];
-var_dump($data);die;
-$db->create('users', [ 
-	'name' => ($_POST['name']),
-	'email' => clean($_POST['email']),
-	'territory' => clean($_POST['territory']),
-];);
-	header('Location: /');
-	}
+$newRegister = new Register($db);
+$addPost=$newRegister->add('posts',$_POST);
+echo "ok";

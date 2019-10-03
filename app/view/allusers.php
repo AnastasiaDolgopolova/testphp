@@ -16,21 +16,13 @@ include  __DIR__ .'/header.php';
             </tr>
           </thead>
           <tbody>
-            <?php foreach($posts as $post):?>
-               <tr>
-              <th scope="row"><?php echo $post['id'];?></th>
-              <td><a href="/show?id=<?php echo $post['id'];?>"><?php echo $post['title'];?></a></td>
-              <td>
-                  <img src="/../uploads/<?=$post['image'] ?>" alt="" width="100" >        
-              </td>
-              <td><?php echo $post['date'];?></td>
-              <td>
-                <a href="/edit?id=<?php echo $post['id'] ?>" class="btn btn-warning">Edit</a>
-                <a href="/delete?id=<?php echo $post['id'] ?>&image=<?php echo $post['image'] ?>" 
-                 class="btn btn-danger" onclick="return confirm('are you shure?')">Delete</a>
-              </td>
-              
-            </tr>
+            <?php foreach($users as $user):?>
+              <tr>
+                <th scope="row"><?php echo $user['id'];?></th>
+                <td><?php echo $user['name'];?></td>
+                <td><?php echo $user['email'];?></td>
+                <td><?php echo $user['territory'];?></td>  
+             </tr>
             <?php endforeach;?>
            
           </tbody>

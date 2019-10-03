@@ -2,7 +2,18 @@
 $db =include __DIR__ . '/../model/database/start.php';
 include __DIR__ . '/../model/Register.php';
 use App\Model\Register;
-//var_dump($_POST);die;
+
+$data = [ 
+	'name' => trim($_POST['name']),
+	'email' => trim($_POST['email']),
+	'territory' => trim($_POST['territory'])
+];
+
 $newRegister = new Register($db);
-$addPost=$newRegister->add('posts',$_POST);
+$newRegister->add('users', [ 
+	'name' => $data['name'],
+	'email' => $data['email'],
+	'territory' => $data['territory']
+]);
+
 echo "ok";

@@ -18,6 +18,7 @@ class Register
     public function add($table,$data)
 	{
 		$cleanData=Validator::clean($data);
+		//var_dump($cleanData);die;
 		$this->db->create($table, [
 					'name' => $_POST['name'],
 					'email' => $_POST['email'],

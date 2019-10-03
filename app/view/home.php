@@ -86,23 +86,23 @@ include  __DIR__ .'/header.php';
          var regionValue = $('select#region').val();
          var cityValue = $('select#city').val();
          var cityAddress = $('select#city').children("option:selected").attr("data-value");
-        var terrytoryValue = $('select#territory').val();
-        var formValidated = formValidate(nameValue, emailValue, regionValue, cityValue, terrytoryValue);
+        var territoryValue = $('select#territory').val();
+        var formValidated = formValidate(nameValue, emailValue, regionValue, cityValue, territoryValue);
 
         if (!formValidated.length) {
                 // выполнить регистрацию
-             if (!terrytoryValue){
-                terrytoryValue = cityAddress;
+             if (!territoryValue){
+                territoryValue = cityAddress;
              }
-            console.log(terrytoryValue);
+            
             $.ajax({
                 url: "/registerUser",
                 type: "POST",
-                data: {name:nameValue, email:emailValue, territory:terrytoryValue},
+                data: {name:nameValue, email:emailValue, territory:territoryValue},
                     cache: false,
                 success: function(responce){
                  if (responce == "ok") {
-                 window.location.replace("/profile");
+                location.href = '/profile';
                  }
                 }
             });
@@ -122,7 +122,7 @@ include  __DIR__ .'/header.php';
              data: {selectedRegion : selectedRegion},
              cache: false,
              success: function(responce){
-                   console.log(responce);
+                   //console.log(responce);
                 var cities = JSON.parse(responce);
                  $("#city").append('<option value="0">Select city</option>');
                  cities.forEach(function(city) {

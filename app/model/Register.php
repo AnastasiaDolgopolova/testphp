@@ -14,6 +14,11 @@ class Register
     {
         $this->db= $db;
     }
+    public function checkUser ($table, $email) 
+    {
+      return $this->db->getByEmail($table, $email);
+    }
+    
 
     public function add($table,$data)
 	{

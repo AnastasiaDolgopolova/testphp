@@ -77,4 +77,15 @@ class QueryBuilder {
     $statement = $this->pdo->prepare($sql);
     $statement->execute($data);
   }
+
+  public function getByEmail ($email) {
+    $sql = "SELECT * FROM {$table} WHERE email=:email";
+    $statement = $this->pdo->prepare($sql);
+    $statement->bindParam(':email',$email);
+    $statement->execute([
+    'email' => $email
+    ]);
+    $result = $statement->fetch(PDO::FETCH_ASSOC); 
+    return $result;
+}
 }

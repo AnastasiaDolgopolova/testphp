@@ -7,6 +7,7 @@ $routes = [
     "/show" => 'app/view/profile.php',
     "/allUsers" => 'app/controller/allUsers.php',
     "/getRegions" => 'app/controller/territory.php',
+    "/checkUser" => 'app/controller/register.php',
     "/getAreas" => 'app/controller/territory.php',
     "/registerUser" => 'app/controller/register.php',
     "/profile" =>'app/controller/userProfile.php'

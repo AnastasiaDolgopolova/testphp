@@ -3,18 +3,22 @@ $db =include __DIR__ . '/../model/database/start.php';
 include __DIR__ . '/../model/Register.php';
 
 use App\Model\Register;
+$newRegister= new Register($db);
 if (count($_POST)>0) {
-    $user =$newRegister-> checkUser('users',trim($_POST['email']));
+    $user =$newRegister->checkUser('users',trim($_POST['email']));
     //var_dump($user);die;
-}
-if($user){
+
+	if($user){
 	require_once __DIR__ . '/../view/profile.php';
+	die;
+	}
+
+	else{$regUser=$newRegister->add('users', [ 
+		'name' => trim($_POST['name']),
+		'email' => trim($_POST['email']),
+		'territory' => trim($_POST['territory'])
+	]);
+
+	echo "ok";
+	}
 }
-
-$regUser=$newRegister->add('users', [ 
-	'name' => trim($_POST['name']),
-	'email' => trim($_POST['email']),
-	'territory' => trim($_POST['territory']
-]);
-
-echo "ok";

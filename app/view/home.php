@@ -9,7 +9,7 @@ include  __DIR__ .'/header.php';
         
         <h2 class="blue-text my-4">Registration</h2>
         <div id="errors-container">
-
+        <div id="success-container">
         </div>
 
 
@@ -94,7 +94,7 @@ include  __DIR__ .'/header.php';
              if (!territoryValue){
                 territoryValue = cityAddress;
              }
-            
+        
             $.ajax({
                 url: "/registerUser",
                 type: "POST",
@@ -102,7 +102,10 @@ include  __DIR__ .'/header.php';
                     cache: false,
                 success: function(responce){
                  if (responce == "ok") {
-                location.href = '/profile';
+               // location.href = '/profile';
+               var success='Данные успешно отправлены,можете авторизоваться';
+              var successDiv= '<div class="alert alert-success" role="alert">'+success+'</div>';
+               $("#success-container").append(successDiv);
                  }
                 }
             });

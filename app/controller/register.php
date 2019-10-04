@@ -9,16 +9,15 @@ if (count($_POST)>0) {
     //var_dump($user);die;
 
 	if($user){
-	require_once __DIR__ . '/../view/profile.php';
-	die;
-	}
+        echo json_encode(['status' => 'redirect', 'path' => '/profile?id='.$user['id']]);
+	    die;
+	} else {
+        $regUser=$newRegister->add('users', [
+            'name' => trim($_POST['name']),
+            'email' => trim($_POST['email']),
+            'territory' => trim($_POST['territory'])
+        ]);
 
-	else{$regUser=$newRegister->add('users', [ 
-		'name' => trim($_POST['name']),
-		'email' => trim($_POST['email']),
-		'territory' => trim($_POST['territory'])
-	]);
-
-	echo "ok";
+        echo json_encode(['status' => 'ok', 'data' => '']);
 	}
 }

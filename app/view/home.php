@@ -5,12 +5,11 @@ include  __DIR__ .'/header.php';
 
 <div class="container my-5 h-100" style="background-color: #F5F5F5">
   <div class="row h-100 justify-content-center align-items-center" >
-    <div class="col-5 text-center" action="register.php" method="post">
+    <div class="col-5 text-center">
         
         <h2 class="blue-text my-4">Registration</h2>
-        <div id="errors-container">
-        <div id="success-container">
-        </div>
+        <div id="errors-container"></div>
+        <div id="success-container"></div>
 
 
         <div class="form-group my-3">
@@ -90,7 +89,6 @@ include  __DIR__ .'/header.php';
         var formValidated = formValidate(nameValue, emailValue, regionValue, cityValue, territoryValue);
 
         if (!formValidated.length) {
-                // выполнить регистрацию
              if (!territoryValue){
                 territoryValue = cityAddress;
              }
@@ -101,12 +99,15 @@ include  __DIR__ .'/header.php';
                 data: {name:nameValue, email:emailValue, territory:territoryValue},
                     cache: false,
                 success: function(responce){
-                 if (responce == "ok") {
-               // location.href = '/profile';
-               var success='Данные успешно отправлены,можете авторизоваться';
-              var successDiv= '<div class="alert alert-success" role="alert">'+success+'</div>';
-               $("#success-container").append(successDiv);
-                 }
+                    var responce_arr = JSON.parse(responce);
+                    if (responce_arr['status'] == "ok") {
+                        // location.href = '/profile';
+                        var success='Данные успешно отправлены,можете авторизоваться';
+                        var successDiv= '<div class="alert alert-success" role="alert">'+success+'</div>';
+                        $("#success-container").append(successDiv);
+                    } else if(responce_arr['status'] == "redirect") {
+                        location.href = responce_arr['path'];
+                    }
                 }
             });
          }
